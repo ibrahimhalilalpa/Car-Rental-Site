@@ -58,8 +58,8 @@ CarPriceBtn.addEventListener('click', (e) => {
      rentcount +=1;
      console.log(rentcount)
 
-      if (rentcount >=5500) 
-      alert("alım sayın doldu amk önce elindekileri teslim et")
+      if (rentcount >=100) 
+      alert("alım sayın doldu önce elindekileri teslim et")
 
       else{
 

@@ -23,14 +23,18 @@ function GetttingCarsData() {
             const childKey = childSnapshot.key;
             const childData = childSnapshot.val();
 
-            var CarStatusBtn = "<button id='CarStatusBtn' class='CarStatusBtn' data-key ='" + childKey + "' data-active = '" + childData.Active + "'>Change Status</button>"
-            var StatusCar;
-            if (childData.Active == 'false') {
-              StatusCar = 'Alınmış';
+           /* var CarStatusBtn = "<button class='CarStatusBtn' data-key='" + childKey + "' data-active='" + childData.Active + "'>Change Status</button>"*/
+            var CarStatusBtn = "<button class='CarStatusBtn' data-key='" + childKey + "' data-active='" + childData.Active + "'>Change Status</button>";
+
+            var StatusCar = "yuvada";
+            
+            if (childData.Active == '0') {
+              StatusCar = 'alınmış';
             }
-            if (childData.Active == 'true') {
-              StatusCar = 'Yuvada';
+            if (childData.Active == '1') {
+              StatusCar = 'yuvada';
             }
+
             // ...
             rowNum += 1;
             var row = "<tr><td>" +
@@ -39,16 +43,14 @@ function GetttingCarsData() {
                 childData.CarName + "</td><td>" +
                 childData.CarModel + "</td><td>" +
                 childData.CarPrice + "</td><td>" +
-
                 childData.AgeLimit + "</td><td>" +
                 childData.CarPassenger + "</td><td>" +
                 childData.CarSuitcase + "</td><td>" +
                 childData.CarGear + "</td><td>" +
                 childData.CarFuelType + "</td><td>" +
                 childData.CarCategoriType + "</td><td>" +
-                childData.Active + "</td></td>"+
-                CarStatusBtn + "</td></tr>"
-
+                StatusCar + "</td><td>" +
+                CarStatusBtn + "</td></tr>";
 
             $(row).appendTo('#dataTbl');
 
@@ -58,6 +60,27 @@ function GetttingCarsData() {
     });
 
 }
+
+
+$("body").on("click", ".CarStatusBtn", function () {
+  var $key = $(this).data("key");
+  //console.log($key);
+  var $active = $(this).data('active');
+  if($active == '1')
+  {
+    update(ref(database, "Cars/" + $key), { Active: '0' })
+    remove(ref(database, "Renting/" + $key))
+    alert('araba kirada');
+
+  }
+
+  if ($active == '0')
+  {
+    update(ref(database, "Cars/" + $key), { Active: '1' })
+    alert('araba yuvada');
+  }
+  GetttingCarsData();
+})
 
 
 
@@ -93,7 +116,6 @@ function GetttingUsersData() {
                 childData.last_login + "</td><td>" +
                 RankName + "</td><td>" +
                 TableButton + "</td></tr>"
-
             $(row).appendTo('#dataTblUser');
             //console.log(childKey);
 
@@ -104,24 +126,6 @@ function GetttingUsersData() {
     });
 }
 
-
-
-
-
-
-
-
-$("body").on("click", ".CarStatusBtn", function () {
-    var $key = $(this).data("key");
-    //console.log($key);
-    var $active = $(this).data('active');
-    if ($active == 'false')
-        update(ref(database, "Cars/" + $key), { Active: 'true' })
-    if ($active == 'true')
-        update(ref(database, "Cars/" + $key), { Active: 'false' })
-    alert('oldu cenaze')
-    GetttingUsersData();
-})
 
 
 
@@ -138,14 +142,8 @@ $("body").on("click", ".TableButton", function () {
   GetttingUsersData();
 })
 
+
 /************************CAR MANEGMENT JS***********************************
-
-
-
-
-
-
-
 
 
 
