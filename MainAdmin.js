@@ -11,6 +11,9 @@ const database = getDatabase(app);
 window.onload = GetttingCarsData();
 window.onload = GetttingUsersData();
 
+
+
+
 /**********************Gettting Cars Data******************************/
 
 function GetttingCarsData() {
@@ -26,13 +29,13 @@ function GetttingCarsData() {
            /* var CarStatusBtn = "<button class='CarStatusBtn' data-key='" + childKey + "' data-active='" + childData.Active + "'>Change Status</button>"*/
             var CarStatusBtn = "<button class='CarStatusBtn' data-key='" + childKey + "' data-active='" + childData.Active + "'>Change Status</button>";
 
-            var StatusCar = "yuvada";
+            var StatusCar = "Not Rented";
             
-            if (childData.Active == '0') {
-              StatusCar = 'alınmış';
+            if (childData.Active == false) {
+              StatusCar = 'Rented';
             }
-            if (childData.Active == '1') {
-              StatusCar = 'yuvada';
+            if (childData.Active == true) {
+              StatusCar = 'Not Rented';
             }
 
             // ...
@@ -66,18 +69,19 @@ $("body").on("click", ".CarStatusBtn", function () {
   var $key = $(this).data("key");
   //console.log($key);
   var $active = $(this).data('active');
-  if($active == '1')
+  if($active == true)
   {
-    update(ref(database, "Cars/" + $key), { Active: '0' })
-    remove(ref(database, "Renting/" + $key))
-    alert('araba kirada');
+    update(ref(database, "Cars/" + $key), { Active: false })
+    //remove(ref(database, "Renting/" + $key))
+    alert('The car has been added to the rental list.');
 
   }
 
-  if ($active == '0')
+  if ($active == false)
   {
-    update(ref(database, "Cars/" + $key), { Active: '1' })
-    alert('araba yuvada');
+    update(ref(database, "Cars/" + $key), { Active: true})
+    alert('Car has been removed from the rental list');
+
   }
   GetttingCarsData();
 })
@@ -128,8 +132,6 @@ function GetttingUsersData() {
 
 
 
-
-
 $("body").on("click", ".TableButton", function () {
   var $key = $(this).data("key");
   //console.log($key);
@@ -138,9 +140,12 @@ $("body").on("click", ".TableButton", function () {
       update(ref(database, "Users/" + $key), { rank: '1' })
   if ($userrank == '1')
       update(ref(database, "Users/" + $key), { rank: '0' })
-  alert('oldu cenaze')
+  alert('Rank is changed.')
   GetttingUsersData();
 })
+
+
+
 
 
 /************************CAR MANEGMENT JS***********************************
@@ -196,6 +201,7 @@ input.onchange = e => {
 reader.onload = function () {
   CarImage.src = reader.result;
 }
+
 //-----------------------------------selection----------------//
 
 selbtn.onclick = function () {
@@ -215,7 +221,25 @@ function GetFileName(file) {
   return fname;
 }
 
-//---------------------------------------upload process-------------///
+
+
+//----------------------------functions for realtime database---------------//
+
+
+
+
+//can't contain "." , "#" ,"$" ,"["or "]"
+
+function ValidateName() {
+  var regex = /[\.#$\[\]]/
+  return !(regex.test(CarImageName.value));
+}
+
+
+//upbtn.onclick = UploadProcess;
+
+
+//---------------------------------------adding process---------------------------------///
 
 var counter;
 
@@ -238,6 +262,9 @@ btnAdd.addEventListener('click', (e) => {
 
   var ImgToUpload = files[0];
   var ImgName = CarImageName.value + extlab.innerHTML;
+
+
+
 
   if (!ValidateName()) {
     alert('Name connot contain "." , "#" ,"$" ,"["or "]"');
@@ -290,64 +317,15 @@ btnAdd.addEventListener('click', (e) => {
     });
 
   
-  alert('Kayıt oluşturuldu.');
+  alert('Data added!');
 
 });
 
 
 
 
-//----------------------------functions for realtime database---------------//
+//---------------------------------------update process---------------------------------///
 
-
-
-
-//can't contain "." , "#" ,"$" ,"["or "]"
-
-function ValidateName() {
-  var regex = /[\.#$\[\]]/
-  return !(regex.test(CarImageName.value));
-}
-
-
-//upbtn.onclick = UploadProcess;
-
-
-
-btnGet.addEventListener('click', (e) => {
-
-  var CarID = document.getElementById('CarID').value;
-
-  const starCountRef = ref(database, 'Cars/' + CarID);
-  onValue(starCountRef, (snapshot) => {
-    const data = snapshot.val(); // data = all data on firebsex 
-    document.getElementById('CarID').value = data.CarID;
-    document.getElementById('CarName').value = data.CarName;
-    document.getElementById('CarModel').value = data.CarModel;
-    document.getElementById('CarPrice').value = data.CarPrice;
-
-    document.getElementById('AgeLimit').value = data.AgeLimit;
-    document.getElementById('CarPassenger').value = data.CarPassenger;
-    document.getElementById('CarSuitcase').value = data.CarSuitcase;
-    document.getElementById('CarGear').value = data.CarGear;
-
-    document.getElementById('CarFuelType').value = data.CarFuelType;
-    document.getElementById('CarCategoriType').value = data.CarCategoriType;
-
-    document.getElementById('CarImage').src = data.image;
-  });
-  alert("Veriler Alındı");
-
-});
-
-
-
-btnDelete.addEventListener('click', (e) => {
-  var CarID = document.getElementById('CarID').value;
-
-  remove(ref(database, 'Cars/' + CarID));
-  alert('Veri silindi');
-});
 
 
 btnUpdate.addEventListener('click', (e) => {
@@ -385,8 +363,47 @@ btnUpdate.addEventListener('click', (e) => {
 
 
 
-  alert('Veriler güncellendi');
+  alert('Data updated!');
 });
 
+
+//---------------------------------------deleting process---------------------------------///
+
+btnDelete.addEventListener('click', (e) => {
+  var CarID = document.getElementById('CarID').value;
+
+  remove(ref(database, 'Cars/' + CarID));
+  alert('Data deleted!');
+});
+
+
+
+//---------------------------------------getting process---------------------------------///
+
+btnGet.addEventListener('click', (e) => {
+
+  var CarID = document.getElementById('CarID').value;
+
+  const starCountRef = ref(database, 'Cars/' + CarID);
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val(); // data = all data on firebsex 
+    document.getElementById('CarID').value = data.CarID;
+    document.getElementById('CarName').value = data.CarName;
+    document.getElementById('CarModel').value = data.CarModel;
+    document.getElementById('CarPrice').value = data.CarPrice;
+
+    document.getElementById('AgeLimit').value = data.AgeLimit;
+    document.getElementById('CarPassenger').value = data.CarPassenger;
+    document.getElementById('CarSuitcase').value = data.CarSuitcase;
+    document.getElementById('CarGear').value = data.CarGear;
+
+    document.getElementById('CarFuelType').value = data.CarFuelType;
+    document.getElementById('CarCategoriType').value = data.CarCategoriType;
+
+    document.getElementById('CarImage').src = data.image;
+  });
+  alert("Data called!");
+
+});
 
 

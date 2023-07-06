@@ -17,7 +17,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!--favicon CSS-->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  
+
 </head>
 
 <body>
@@ -33,7 +33,7 @@
 
 
       <ul class="MainPageNav-List">
-        <li><a href="MainUser.html"><i class="fa-solid fa-house"></i> Mainpage</a></li>
+        <li><a href="MainPage.html"><i class="fa-solid fa-house"></i> Mainpage</a></li>
         <li><a href="#About"><i class="fa-solid fa-address-card"></i> About</a></li>
       </ul>
     </div>
@@ -71,86 +71,97 @@
 
         </select>
       </div>
+
+
       <div id="DateRange" class="DateRange" name="DateRange">
         <label for="">Rental Range:</label>
-        <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" id="DateBox" />
+        <input type="text" name="daterange" value="01/01/2023 - 01/15/2023" id="DateBox" />
+      </div>
+
+    </div>
+
+
+    <div class="Container1">
+      <div class="Car_Box" id="Car_Box">
+      </div>
+  
+  
+      <!--Register Section-->
+      <div class="RegisterForm">
+        <h1>Register:</h1>
+        <div class="Middle">
+  
+          <div class="MidTop1">
+            <h6>DRIVE INFORMATION</h6> <br>
+  
+            <div>
+              <label>First Name:</label>
+              <input type="text" id="FirstNameId" placeholder="İbrahim Halil" required>
+            </div>
+            <div>
+              <label>Last Name:</label>
+              <input type="text" id="LastNameId" placeholder="Alpa" required>
+            </div>
+            <div class="MidTop12">
+              <div class="MidTop12_">
+                <label for="TCId">TC:</label>
+
+                <input type="text" id="TCId" pattern="[0-9]{11}" minlength="1" maxlength="11"
+                  placeholder="**********" required> <br>
+
+              </div>
+              <div class="MidTop12_">
+                <label for="AgeId">Age:</label>
+                <input type="number" id="AgeId" maxlength="100" min="18" required>
+              </div>
+              <div class="MidTop12_">
+                <label for="LicenseId">License:</label>
+                <input type="text" id="LicenseId" required>
+              </div>
+  
+            </div>
+  
+          </div>
+  
+          <div class="MidTop2">
+            <h6>CONTACT INFORMATION</h6> <br>
+  
+            <div class="MidTop2_1">
+              <div>
+                <label for="EmailId">Email Adresi:</label> <br>
+                <input type="email" id="EmailId" name="EmailId" required placeholder="example@hotmail.com"><br>
+              </div>
+              <div>
+                <label>Phone Number:</label> <br>
+                <input type="tel" id="PhoneId" pattern="[0-0]{1} [0-9]{3} [0-9]{3} [0-9]{4}" minlength="14" maxlength="14"
+                  placeholder="0 541 710 0000" required> <br>
+              </div>
+            </div>
+  
+            <div>
+              <label for="address">Address:</label>
+              <textarea id="AddressId" name="address" rows="2" cols="65" required></textarea>
+            </div>
+  
+          </div>
+  
+  
+        </div>
+      </div>
+  
+      <!--Renting Car Section-->
+  
+  
+      <div class="RentDiv">
+        <Label>Normal Rental Price: </Label><s><span id="CarPriceSpanNormalFiyat"></s></span> <br><br>
+        <Label>Discount Amount: </Label><span id="CarPriceSpanIndirimMiktarı"></span> <br><br>
+        <Label>Net Rental Price: </Label><span id="CarPriceSpanİndirimliFiyat"></span> <br><br>
+        <button id="CarPriceBtn" value="Calculate">Rent</button>
       </div>
     </div>
 
 
-    <div class="Car_Box" id="Car_Box">
-    </div>
 
-
-    <!--Register Section-->
-    <div class="RegisterForm">
-      <h1>Register:</h1>
-      <div class="Middle">
-
-        <div class="MidTop1">
-          <h6>SÜRÜCÜ BİLGİLERİ </h6> <br>
-
-          <div>
-            <label>First Name:</label>
-            <input type="text" id="FirstNameId" placeholder="İbrahim Halil" required>
-          </div>
-          <div>
-            <label>Last Name:</label>
-            <input type="text" id="LastNameId" placeholder="Alpa" required>
-          </div>
-          <div class="MidTop12">
-            <div class="MidTop12_">
-              <label for="TCId">TC:</label>
-              <input type="number" id="TCId" maxlength="11" min="11" placeholder="***********" required>
-            </div>
-            <div class="MidTop12_">
-              <label for="AgeId">Age:</label>
-              <input type="number" id="AgeId" maxlength="100" min="18" required>
-            </div>
-            <div class="MidTop12_">
-              <label for="LicenseId">License:</label>
-              <input type="text" id="LicenseId"required>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="MidTop2">
-          <h6>İLETİŞİM BİLGİLERİ</h6> <br>
-
-          <div class="MidTop2_1">
-            <div>
-              <label for="EmailId">Email Adresi:</label> <br>
-              <input type="email" id="EmailId" name="EmailId" required placeholder="example@hotmail.com"><br>
-            </div>
-            <div>
-              <label>Phone Number:</label> <br>
-              <input type="tel" id="PhoneId" pattern="[0-0]{1} [0-9]{3} [0-9]{3} [0-9]{4}" minlength="14" maxlength="14"
-                placeholder="0 541 710 0000" required> <br>
-            </div>
-          </div>
-
-          <div>
-            <label for="address">Address:</label>
-            <textarea id="AddressId" name="address" rows="2" cols="65" required></textarea>
-          </div>
-
-        </div>
-
-
-      </div>
-    </div>
-
-    <!--Renting Car Section-->
-
-
-    <div class="RentSection">
-      <Label>Normal Fiyat: </Label><s><span id="CarPriceSpanNormalFiyat"></s></span> <br><br>
-      <Label>Indirim Miktarı: </Label><span id="CarPriceSpanIndirimMiktarı"></span> <br><br>
-      <Label>İndirimli Fiyat: </Label><span id="CarPriceSpanİndirimliFiyat"></span> <br><br>
-      <button id="CarPriceBtn" value="Calculate">Rent</button>
-    </div>
   </div>
 
 
@@ -220,6 +231,9 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
+
+<!---------------Calculation of price------------------>
+
 <script>
   $('input[name="dates"]').daterangepicker();
 
@@ -229,24 +243,24 @@
     }, function (start, end) {
       var fark = new Date(end - start),
 
-      Day = Math.floor(fark / 1000 / 60 / 60 / 24);
+        Day = Math.floor(fark / 1000 / 60 / 60 / 24);
 
       //var CarPrice =     document.getElementById('CarPrice').value = data.CarPrice;
 
       //var ucret = gun*CarPrice;
 
-    window.localStorage.setItem("Day", Day);
-      window.alert(Day);
+      window.localStorage.setItem("Day", Day);
+      window.alert("Total rental days: "+Day);
       //window.alert(ucret);
 
       console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
       //var Car_Price = document.getElementById('CarPrice').value;
       var gg = document.getElementById('CarPrice').textContent;
 
-      var ucret = Day * gg;
-      document.getElementById('CarPriceSpanNormalFiyat').textContent = ucret;
-      document.getElementById('CarPriceSpanİndirimliFiyat').textContent = ucret - (ucret * (20 / 100));
-      document.getElementById('CarPriceSpanIndirimMiktarı').textContent = ucret - ucret - (ucret * (20 / 100));
+      var price = Day * gg;
+      document.getElementById('CarPriceSpanNormalFiyat').textContent = price;
+      document.getElementById('CarPriceSpanİndirimliFiyat').textContent = price - (price * (20 / 100));
+      document.getElementById('CarPriceSpanIndirimMiktarı').textContent = price - price - (price * (20 / 100));
 
     });
   });

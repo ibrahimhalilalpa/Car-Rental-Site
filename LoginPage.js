@@ -25,13 +25,14 @@ const dbRef = ref(database);
 
 var FailedCount=0;
 
+
+/************************SIGN IN***************************************/
+
 SignIn.addEventListener('click', (e) => {
 
     var email = document.getElementById('emailIn').value;
     var password = document.getElementById('passwordIn').value;
     var rank;
-
-
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -47,16 +48,24 @@ SignIn.addEventListener('click', (e) => {
 
                 window.localStorage.setItem("UserId",user.uid);
                 //alert(window.localStorage.getItem("UserId"));
-                console.log(window.localStorage.getItem("UserId"))
+                //console.log(window.localStorage.getItem("UserId"))
                 
                 if (rank == 1) {
                     window.location.href = "MainAdmin.html";
+                    var $key = $(this).data("key");
+                    window.localStorage.setItem("rank",$key);
+
+                    console.log($key);
                 }
                 else {
-                    window.location.href = "MainUser.html";
+                    window.location.href = "MainPage.html";
+                        var $key = $(this).data("key");
+                        window.localStorage.setItem("rank",$key);
+                        console.log($key);
+                    
                 }
 
-                //alert('Login is successfully!');
+                alert('Login is successfully!');
             })
 
             swal({
@@ -79,15 +88,16 @@ SignIn.addEventListener('click', (e) => {
               if(FailedCount==3)
               {
                   document.getElementById('PasswordResetForm').style.display = 'block';
-      
                   document.getElementById('SignUpForm').style.display = 'none';
                   document.getElementById('SignInForm').style.display = 'none';
                   FailedCount=0;
               }
         });
-
 });
 
+
+
+/************************SIGN UP***************************************/
 
 SignUp.addEventListener('click', (e) => {
     var username = document.getElementById('usernameUp').value;
@@ -122,6 +132,8 @@ SignUp.addEventListener('click', (e) => {
 });
 
 
+
+/************************RESET PASSWORD***************************************/
 
 resetbtn.addEventListener('click', (e) => {
     var email = document.getElementById('resetEmail').value;

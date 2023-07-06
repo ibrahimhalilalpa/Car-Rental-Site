@@ -1,3 +1,4 @@
+/***************************LOG IN CSS********************************/
 /*
 .Login
 {
@@ -25,12 +26,16 @@
 body
 {
     background-color: #050c14;
-
+    background-image: linear-gradient(to bottom, rgba(32, 44, 48, 0.2), rgba(59, 35, 35, 0.1),rgb(47, 51, 61)), url(./image/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .SignUpForm
 {
-    width: 300px;
+    width: 25%;
+    height: 65%;    
+    margin: 0 auto;
     padding: 30px;
     text-align: center;
     /*background: url(./signUpBackGround.jpg);   */
@@ -41,8 +46,6 @@ body
     overflow: hidden;
     border: 1px solid rgb(73, 61, 61);
     background-color: #122031;
-
-
 } 
 
 .SignUpForm h1
@@ -56,7 +59,7 @@ body
 .SignUpForm input
 {
     display: block;
-    width: 100%;
+    width: 80%;
     height: 50px;
     text-align: center;
     padding: 20px;
@@ -64,22 +67,13 @@ body
     border: none;
 }
 
-.SignUpForm #fromSignUptoSignIn
-{
-    display: block;
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
-    border: none;
-    background-color: transparent;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
+
 
 .SignUpForm .txt
 {
-    margin: 25px 0px;
+    margin: 25px auto;
     border-radius: 10px;
+    text-align: center;
 }
 
 .SignUpForm .btn
@@ -101,51 +95,39 @@ body
     transform: scale(0.90);
 }
 
-.SignUpForm p
-{
-    color: white;
-}
-.SignUpForm a
-{
-    color: blue;
-}
 
-/***************************LOG IN CSS********************************/
 
-*{
-    margin: 0;
-    padding: 0;
+.SignUpForm #fromSignUptoSignIn
+{
+    display: block;
+    width: 50%;
+    text-align: center;
     box-sizing: border-box;
-}
-body
-{
-    background-color: #050c14;
-
-}
-body img
-{
+    border: none;
+    background-color: transparent;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: antiquewhite;
     background-color: #062955;
-    width:100%;
-    object-fit: cover;
-    
+    text-align: center;
 }
 
-
-/*******************************Sign In Css*************************/
+/*******************************SIGN IN CSS*************************/
 
 .SignInForm
 {
-    width: 300px;
-    padding: 25px;
-    text-align: center;
-    /*background: url(./signUpBackGround.jpg);  */
+    width: 25%;
+    height: 65%;
+    padding: 30px;
+    margin: 0 auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
     border: 1px solid rgb(73, 61, 61);
-    background-color: #122031
+    background-color: #122031;
+    text-align: center;
 } 
 
 .SignInForm h1
@@ -154,40 +136,26 @@ body img
     margin-top:20px;
     padding-bottom: 25px;
     font-size: 50px;
+    text-align: center;
+
 }
 
 .SignInForm #emailIn, #passwordIn, #SignIn
 {
     display: block;
-    width: 100%;
+    width: 70%;
     height: 50px;
-    text-align: center;
     padding: 10px;
     box-sizing: border-box;
     border: none;
-}
-
-
-.SignInForm  #resetbutton, #fromSignIntoSignUp
-{
-    display: block;
-    width: 100%;
-    height: 25px;
     text-align: center;
-    box-sizing: border-box;
-    border: none;
-    background-color: transparent;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    background-color: #062955;
 }
-
-
 
 .SignInForm .txt
 {
-    margin: 25px 0px;
+    margin: 25px auto;
     border-radius: 10px;
+    text-align: center;
 }
 
 .SignInForm .btn
@@ -201,6 +169,8 @@ body img
     cursor: pointer;
     transition: 0.5s;
     display: block;
+    text-align: center;
+
 }
 .SignInForm .btn:hover
 {
@@ -209,22 +179,34 @@ body img
     transform: scale(0.90);
 }
 
-.SignInForm p
+
+
+.SignInForm #fromSignIntoSignUp, #resetbutton
 {
-    color: white;
+    display: block;
+    width: 50%;
+    height: 25px;
+    text-align: center;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: antiquewhite;
+    background-color: #062955;
+    text-align: center;
 }
-.SignInForm p a
-{
-    color: blue;
-}
+
 
 
 /************************PASSWORD RESET CSS**********************************/
 
+
 *{
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
+    text-align: center;
 }
 body
 {
@@ -233,7 +215,8 @@ body
 
 .PasswordResetForm
 {
-    width: 300px;
+    width: 25%;
+    height: 50%;
     padding: 30px;
     text-align: center;
     /*background: url(./signUpBackGround.jpg);  */
@@ -257,7 +240,7 @@ body
 .PasswordResetForm #resetEmail, #resetbtn
 {
     display: block;
-    width: 100%;
+    width: 70%;
     height: 50px;
     text-align: center;
     padding: 20px;
@@ -268,26 +251,29 @@ body
 .PasswordResetForm #fromResettoSignIn
 {
     display: block;
-    width: 100%;
+    width: 50%;
+    height: 25px;
     text-align: center;
     box-sizing: border-box;
     border: none;
     background-color: transparent;
     margin-top: 5px;
     margin-bottom: 20px;
+    color: antiquewhite;
+    background-color: #062955;
+    text-align: center;
 }
 
 
 
 .PasswordResetForm .txt
 {
-    margin: 25px 0px;
     border-radius: 10px;
+    text-align: center;
 }
 
 .PasswordResetForm .btn
 {
-
     color: white;
     font-size: 15px;
     border-radius: 40px 10px;

@@ -50,8 +50,8 @@
                 <li><a href="#Our Cars"><i class="fa-sharp fa-solid fa-car"></i> Our Cars</a></li>
                 <li><a href="#About"><i class="fa-solid fa-address-card"></i> About</a></li>
                 <li><a href="#Contact"><i class="fa-solid fa-phone-volume"></i> Contact</a></li>
-                <li class="LoginPage"><a href="LoginPage.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
-                </li>
+                <li><a onclick="Exit()" id="Exit"><i class="fa-solid fa-circle-xmark"></i> Exit  </a></li>
+            </li>
             </ul>
         </div>
 
@@ -76,13 +76,11 @@
         <div class="MainPage-Main">
             <div class="MainPage-Desciption">
                 <div class="MainPage-Row">
-                    <H1>CARS
-                        <hr>WEBSITE
+                    <H1>CARS WEBSITE
                     </H1>
-                    <p class="MainPage-Info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis architecto
-                        maiores ea culpa ex quaerat obcaecati eos laboriosam hic commodi. Cum, id explicabo? Eius fugiat
-                        quis explicabo, necessitatibus labore suscipit?</p>
-                    <button class="button">All Cars</button>
+                    <div>
+                        <p class="MainPage-Info">AlpaCar Renting: Quality car rental service. Safe, affordable prices, easy booking. Choose your vehicle now and start the journey!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -273,6 +271,14 @@ function topFunction() {
     </script>
     <!--=======================Javascript============================-->
 
+    <script>
+        function Exit()
+        {
+        if (confirm("Do you want to leave this site? \n\nEither OK or Cancel."))
+          window.location.replace("index.html");
+        }
+     </script>
+
     <section>
         <!--=== Mian Js ===-->
         <script src="/Js/Firebase.js"></script>
@@ -369,7 +375,7 @@ $("body").on("click", ".Car_Box-RentBtn", function () {
     var $key = $(this).data("key");
     window.localStorage.setItem("CarID",$key);
     console.log($key);
-    location.href="LoginPage.html";
+    location.href="RentingPage.html";
 
 })
 
